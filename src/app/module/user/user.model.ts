@@ -3,7 +3,7 @@ import { IUser } from "../../types/types";
 
 
 const UserSchema = new Schema<IUser>({
-email:{type:String , required:true, trim:true},
+email:{type:String , required:true, trim:true,unique:true},
 name:{type:String,required:true,trim:true},
 password:{type:String,required:true,trim:true},
 role: {
@@ -12,6 +12,11 @@ role: {
 }
 
 
+},
+{
+    collection:"User",
+    versionKey:false,
+    timestamps:true
 })
 
 const User = model<IUser>("User", UserSchema)
