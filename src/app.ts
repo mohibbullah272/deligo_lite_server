@@ -3,6 +3,7 @@ import express from 'express';
 import cors from 'cors'
 import globalErrorHandler from "./app/middlewares/error";
 import { userRouter } from "./app/module/user/user.route";
+import { rideRouter } from "./app/module/Ride/ride.route";
 
 
 
@@ -19,7 +20,7 @@ app.use(cors(
 app.use(express.json())
 
 app.use('/auth',userRouter)
-
+app.use('/rides',rideRouter)
   
 
 app.get("/healthz", (req:Request,res:Response) => {

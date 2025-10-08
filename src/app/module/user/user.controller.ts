@@ -2,14 +2,15 @@ import { Request, Response } from "express";
 import { userService } from "./user.service";
 
 
+
 const createAccount = async(req:Request,res:Response)=>{
     try {
         const result = await userService.createAccount(req.body)
-        return result
+        return res.status(200).json({message:"account created",data:result})
 
     } catch (error) {
         console.log(error)
-        return error
+        return res.send(error)
     }
 }
 
@@ -17,11 +18,11 @@ const createAccount = async(req:Request,res:Response)=>{
 const login =async(req:Request,res:Response)=>{
     try {
         const result = await userService.login(req.body)
-        return result
+        return res.status(200).json({message:"login success",data:result})
 
     } catch (error) {
         console.log(error)
-        return error
+        return res.send(error)
     }
 
 }

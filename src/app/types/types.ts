@@ -6,6 +6,7 @@ export interface IUser {
 }
 export interface IRide {
     customerName: string;
+    userEmail:string;
     pickup: string;
     destination: string;
     vehicleType: string;
@@ -14,6 +15,13 @@ export interface IRide {
     estimatedArrival: string;
 }
 
+export interface IRider {
+    vehicleType: string;
+    driverName: string;
+    fare: number;
+    estimatedArrival: string;
+
+}
 export interface IOrder {
     customerName: string;
     restaurantId: string;
