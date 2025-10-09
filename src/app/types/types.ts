@@ -5,6 +5,7 @@ export interface IUser {
     role : "User" | "Admin"
 }
 export interface IRide {
+    id?:string;
     customerName: string;
     userEmail:string;
     pickup: string;
@@ -16,6 +17,7 @@ export interface IRide {
 }
 
 export interface IRider {
+    id?:string;
     vehicleType: string;
     driverName: string;
     fare: number;
@@ -23,6 +25,7 @@ export interface IRider {
 
 }
 export interface IOrder {
+    id?:string;
     customerName: string;
     restaurantId: string;
     items: [{ name: string; price: number }];
@@ -32,6 +35,7 @@ export interface IOrder {
 }
 
 export interface IRestaurant {
+    id?:string;
     name: string;
     cuisineType: string;
     image: string;
