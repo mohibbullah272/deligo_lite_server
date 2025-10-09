@@ -1,52 +1,53 @@
 import { Request, Response } from "express";
 import { restaurantService } from "./restaurant.service";
+import { errorResponse, successResponse } from "../../../utils/responseHandler";
 
 
 const addRestaurant = async(req:Request,res:Response)=>{
     try {
         const result = await restaurantService.addRestaurant(req.body)
-        res.status(200).json({data:result,message:"restaurant added"})
-    } catch (error) {
+       return successResponse(res,200,"restaurant added",result)
+    } catch (error:any) {
         console.log(error)
-        res.send(error)
+      return errorResponse(res,500,error.message,error)
     }
 }
 const getAllRestaurant = async(req:Request,res:Response)=>{
     try {
         const result = await restaurantService.getAllRestaurant()
-        res.status(200).json({data:result,message:"data retrieved successfully"})
-    } catch (error) {
+    return successResponse(res,200,"data retrieved successfully",result)
+    } catch (error:any) {
         console.log(error)
-        res.send(error)
+        return errorResponse(res,500,error.message,error)
     }
 }
 
 const getRestaurantDetails = async(req:Request,res:Response)=>{
     try {
         const result = await restaurantService.getSpecificRestaurant(Number(req.params.id))
-        res.status(200).json({data:result,message:"data retrieved successfully"})
-    } catch (error) {
+     return successResponse(res,200,"data retrieved successfully",result)
+    } catch (error:any) {
         console.log(error)
-        res.send(error)
+        return errorResponse(res,500,error.message,error)
     }
 }
 const updateRestaurant = async(req:Request,res:Response)=>{
     try {
         const result = await restaurantService.updateRestaurant(req.body,Number(req.params.id))
-        res.status(200).json({data:result,message:"data retrieved successfully"})
-    } catch (error) {
+       return successResponse(res,200,"data update successfully",result)
+    } catch (error:any) {
         console.log(error)
-        res.send(error)
+        return errorResponse(res,500,error.message,error)
     }
 }
 
 const deleteRestaurant =async(req:Request,res:Response)=>{
     try {
         const result = await restaurantService.deleteRestaurant(Number(req.params.id))
-        res.status(200).json({data:result,message:"delete successful"})
-    } catch (error) {
+        return successResponse(res,204,"data update successfully",result)
+    } catch (error:any) {
         console.log(error)
-        res.send(error)
+        return errorResponse(res,400,error.message,error)
     }
 }
 export const restaurantController={

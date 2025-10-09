@@ -4,6 +4,8 @@ import cors from 'cors'
 import globalErrorHandler from "./app/middlewares/error";
 import { userRouter } from "./app/module/user/user.route";
 import { rideRouter } from "./app/module/Ride/ride.route";
+import { restaurantRouter } from "./app/module/Restaurant/restaurant.route";
+import { orderRouter } from "./app/module/orders/orders.route";
 
 
 
@@ -21,7 +23,8 @@ app.use(express.json())
 
 app.use('/auth',userRouter)
 app.use('/rides',rideRouter)
-  
+app.use('/orders',orderRouter)
+app.use('/restaurants',restaurantRouter)
 
 app.get("/healthz", (req:Request,res:Response) => {
     res.send("ok");

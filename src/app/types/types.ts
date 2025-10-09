@@ -1,3 +1,5 @@
+import { Types } from "mongoose";
+
 export interface IUser {
     email:string;
     password:string;
@@ -5,7 +7,7 @@ export interface IUser {
     role : "User" | "Admin"
 }
 export interface IRide {
-    id?:string;
+    _id?:Types.ObjectId;
     customerName: string;
     userEmail:string;
     pickup: string;
@@ -17,7 +19,7 @@ export interface IRide {
 }
 
 export interface IRider {
-    id?:string;
+    _id?:Types.ObjectId;
     vehicleType: string;
     driverName: string;
     fare: number;
@@ -25,9 +27,9 @@ export interface IRider {
 
 }
 export interface IOrder {
-    id?:string;
+    _id?:Types.ObjectId;
     customerName: string;
-    restaurantId: string;
+    restaurantId: Types.ObjectId;
     items: [{ name: string; price: number }];
     totalAmount: number;
     estimatedDelivery: string;
@@ -35,7 +37,7 @@ export interface IOrder {
 }
 
 export interface IRestaurant {
-    id?:string;
+    _id?:Types.ObjectId;
     name: string;
     cuisineType: string;
     image: string;

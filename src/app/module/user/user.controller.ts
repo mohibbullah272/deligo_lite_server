@@ -1,16 +1,17 @@
 import { Request, Response } from "express";
 import { userService } from "./user.service";
+import { errorResponse, successResponse } from "../../../utils/responseHandler";
 
 
 
 const createAccount = async(req:Request,res:Response)=>{
     try {
         const result = await userService.createAccount(req.body)
-        return res.status(200).json({message:"account created",data:result})
+        return successResponse(res,200,"account created",result)
 
-    } catch (error) {
+    } catch (error:any) {
         console.log(error)
-        return res.send(error)
+        return errorResponse(res,500,error.message,error)
     }
 }
 
@@ -18,11 +19,11 @@ const createAccount = async(req:Request,res:Response)=>{
 const login =async(req:Request,res:Response)=>{
     try {
         const result = await userService.login(req.body)
-        return res.status(200).json({message:"login success",data:result})
+        return successResponse(res,200,"login success",result)
 
-    } catch (error) {
+    } catch (error:any) {
         console.log(error)
-        return res.send(error)
+        return errorResponse(res,500,error.message,error)
     }
 
 }

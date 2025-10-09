@@ -12,3 +12,5 @@ router.get('/',restaurantController.getAllRestaurant)
 router.get('/:id',restaurantController.getRestaurantDetails)
 router.patch('/:id',restaurantController.updateRestaurant)
 router.delete('/',restaurantController.deleteRestaurant)
+
+export const restaurantRouter = router
