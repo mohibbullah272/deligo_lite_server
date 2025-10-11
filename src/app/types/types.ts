@@ -29,8 +29,9 @@ export interface IRider {
 export interface IOrder {
     _id?:Types.ObjectId;
     customerName: string;
+    customerEmail:string
     restaurantId: Types.ObjectId;
-    items: [{ name: string; price: number }];
+    items: [{ name: string; price: number;quantity:number}];
     totalAmount: number;
     estimatedDelivery: string;
   

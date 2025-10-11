@@ -14,12 +14,16 @@ const getAllRestaurant = async()=>{
     }
 }
 
-const getSpecificRestaurant = async(id:number)=>{
+const getSpecificRestaurant = async(id:string)=>{
     try {
-        const getRestaurant = await Restaurant.findOne({_id:id})
+  
+        console.log(id)
+        const getRestaurant = await Restaurant.findById(id)
+          console.log(getRestaurant)
         if(!getRestaurant){
             throw new AppError("no data found",404)
         }
+        return getRestaurant
     } catch (error) {
         console.log(error)
         return error

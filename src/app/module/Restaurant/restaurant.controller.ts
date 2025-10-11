@@ -24,7 +24,7 @@ const getAllRestaurant = async(req:Request,res:Response)=>{
 
 const getRestaurantDetails = async(req:Request,res:Response)=>{
     try {
-        const result = await restaurantService.getSpecificRestaurant(Number(req.params.id))
+        const result = await restaurantService.getSpecificRestaurant(req.params.id)
      return successResponse(res,200,"data retrieved successfully",result)
     } catch (error:any) {
         console.log(error)

@@ -4,11 +4,20 @@ import { errorResponse, successResponse } from "../../../utils/responseHandler";
 
 const createRider = async(req:Request,res:Response)=>{
     try {
+   
         const uploadRider = await rideService.addRiders(req.body)
-        
+   
         return successResponse(res,200,"rider created",uploadRider)
     } catch (error:any) {
         console.log(error)
+        return errorResponse(res,500,error.message,error)
+    }
+}
+const getRider = async(req:Request,res:Response)=>{
+    try {
+        const riders = await rideService.getRiders(req.params.vehicleType)
+        return successResponse(res,200,"rider found",riders)
+    } catch (error:any) {
         return errorResponse(res,500,error.message,error)
     }
 }
@@ -46,5 +55,6 @@ export const rideController ={
     getRideDetails,
     getUserRide,
     bookRide,
-    createRider
+    createRider,
+    getRider
 }

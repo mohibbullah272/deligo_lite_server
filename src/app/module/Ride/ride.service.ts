@@ -12,6 +12,15 @@ throw new AppError("something went wrong",500,)
     }
 }
 
+const getRiders = async(vehicleType:string)=>{
+    try {
+        const result = await Rider.find({vehicleType})
+        return result
+    } catch (error) {
+        throw new AppError("something went wrong",500,)
+    }
+}
+
 const bookRides = async(payload:IRide)=>{
 try {
     const result = await Ride.create(payload)
@@ -51,5 +60,7 @@ export const rideService = {
     addRiders,
     bookRides,
     getUserRide,
-    getRideDetails
+    getRideDetails,
+ getRiders 
+
 }

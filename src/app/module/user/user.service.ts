@@ -12,11 +12,11 @@ try {
         return {  message:"user already exist"}
     }
     const createUser = await User.create(payload)
-    return {message:"user created success"}
+    return createUser
 
 } catch (error) {
     console.log(error)
-    return EvalError
+    return error
 }
 }
 
@@ -32,8 +32,11 @@ try {
     if(!findUser){
         return {message:"user not found"}
     }
+    if(findUser.password === payload.password){
 
-    return {data:findUser,message:"user find successfully"}
+        return findUser
+    }
+    return "unauthorized action"
 } catch (error) {
     console.log(error)
     return error
