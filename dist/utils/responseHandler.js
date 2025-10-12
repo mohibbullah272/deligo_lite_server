@@ -13,7 +13,7 @@ const errorResponse = (res, statusCode, message, error) => {
     return res.status(statusCode).json({
         success: false,
         message,
-        error: (error === null || error === void 0 ? void 0 : error.message) || error || null,
+        error: error?.message || error || null,
     });
 };
 exports.errorResponse = errorResponse;
