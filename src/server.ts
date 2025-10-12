@@ -16,7 +16,7 @@ try {
 }
 }
 
-process.on('unhandledRejection',(err)=>{
+process.on('unhandledRejection',(err:any)=>{
     console.log('error detected server about to shuting down......',err)
 if(server){
     server.close(()=>{
@@ -25,7 +25,7 @@ if(server){
 }
 process.exit(1)
 })
-process.on('uncaughtException',(err)=>{
+process.on('uncaughtException',(err:any)=>{
     console.log('error detected server about to shuting down......',err)
 if(server){
     server.close(()=>{
