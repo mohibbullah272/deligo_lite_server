@@ -32,7 +32,8 @@ const bookRide = async(req:Request,res:Response)=>{
 }
 
 const getUserRide = async(req:Request,res:Response)=>{
-try {
+    try {
+    
     const rides = await rideService.getUserRide(req.params.email)
     return successResponse(res,200,"rides find successfully",rides)
 } catch (error:any) {
@@ -43,7 +44,8 @@ try {
 
 const getRideDetails = async(req:Request,res:Response)=>{
 try {
-    const details = await rideService.getRideDetails(Number(req.params.id))
+  
+    const details = await rideService.getRideDetails(req.params.id)
     return successResponse(res,200,"details find successfully",details)
 } catch (error:any) {
     console.log(error)

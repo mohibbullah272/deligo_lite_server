@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.rideRouter = void 0;
+const express_1 = require("express");
+const ride_controller_1 = require("./ride.controller");
+const router = (0, express_1.Router)();
+router.post('/', ride_controller_1.rideController.bookRide);
+router.get('/user-ride/:email', ride_controller_1.rideController.getUserRide);
+router.get('/rider/:vehicleType', ride_controller_1.rideController.getRider);
+router.get('/:id', ride_controller_1.rideController.getRideDetails);
+router.post('/rider', ride_controller_1.rideController.createRider);
+exports.rideRouter = router;

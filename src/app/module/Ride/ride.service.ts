@@ -33,7 +33,7 @@ try {
 }
 const getUserRide = async(email:string)=>{
 try {
-    const result =  await Ride.findOne({userEmail:email})
+    const result =  await Ride.find({userEmail:email})
     if(!result){
         throw new AppError('rides not found',404)
     }
@@ -43,9 +43,9 @@ try {
     return error
 }
 }
-const getRideDetails =async(id:number)=>{
+const getRideDetails =async(id:string)=>{
  try {
-    const rideDetails = await Ride.findOne({_id:id})
+    const rideDetails = await Ride.findById(id)
     if(!rideDetails){
         throw new AppError('ride details not found',404)
     }

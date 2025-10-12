@@ -9,7 +9,7 @@ const getAllRestaurant = async()=>{
         const getRestaurant = await Restaurant.find()
         return getRestaurant
     } catch (error) {
-        console.log(error)
+    
         return error
     }
 }
@@ -17,15 +17,15 @@ const getAllRestaurant = async()=>{
 const getSpecificRestaurant = async(id:string)=>{
     try {
   
-        console.log(id)
+     
         const getRestaurant = await Restaurant.findById(id)
-          console.log(getRestaurant)
+      
         if(!getRestaurant){
             throw new AppError("no data found",404)
         }
         return getRestaurant
     } catch (error) {
-        console.log(error)
+     
         return error
     }
 }

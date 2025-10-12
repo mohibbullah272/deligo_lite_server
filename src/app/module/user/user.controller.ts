@@ -19,7 +19,7 @@ const createAccount = async(req:Request,res:Response)=>{
 const login =async(req:Request,res:Response)=>{
     try {
         const result = await userService.login(req.body)
-        console.log(result)
+   
         return successResponse(res,200,"login success",result)
 
     } catch (error:any) {
