@@ -4,13 +4,16 @@ import app from './app';
 import dotenv from 'dotenv'
 dotenv.config()
 let server:Server;
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 10000;
+   const HOST = '0.0.0.0';
 const Main =async()=>{
 try {
     await mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.3t5vk.mongodb.net/deligoDb?retryWrites=true&w=majority&appName=Cluster0`)
     console.log('db connected')
 
-   server = app.listen(PORT,()=>{console.log('server running on port 5000')})
+   server = app.listen(Number(PORT), HOST, () => {
+     console.log(`🚀 Server running on http://${HOST}:${PORT}`);
+   });
 } catch (error) {
     console.log(error)
 }
